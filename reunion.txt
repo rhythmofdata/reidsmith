@@ -1,0 +1,8 @@
+Name of main folder: reid-smith
+Name of project: reunion
+
+Main app name: reunion-site
+
+App function:  signup, login, logout
+
+site temp email: reunionsitetester@gmail.com

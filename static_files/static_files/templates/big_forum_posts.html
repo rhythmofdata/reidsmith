@@ -1,0 +1,86 @@
+{% extends 'big_forum_base.html' %}
+
+{% load static %}
+{% load hitcount_tags %}
+
+{% block content%}
+  
+    <!-- search box-->
+    <div class="search-box">
+        <div>
+            <select name="" id="">
+                <option value="everything">Everything</option>
+                <option value="titles">Titles</option>
+                <option value="descriptions">Description</option>
+            
+            </select>
+            <input type="text" name="q" id="" placeholder="search...">
+            <button>Go</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <!--Navigation-->
+        <div class="navigate">
+            <span><a href="{% url 'big_forum_home' %}">MyForum - Forums</a> >> <a style = "text-decoration:none"{{forum.get_url}}>{{forum.title}}</a></span>
+        </div>
+        <div class="posts-table">
+            <div class="table-head">
+                <div class="status">Status</div>
+                <div class="subjects">Subjects</div>
+                <div class="replies">Replies/Views</div>
+                <div class="last-reply">Last Reply</div>
+            </div>
+            {% for post in posts %}
+                <div class="table-row">
+                    <div class="status"><i class="fa fa-fire"></i></div>
+                    <div class="subjects">
+                        <a  style="text-decoration:none" href ="{{post.get_url}}">{{post.title}}</a>
+                        <br>
+                        <span>By <b><a href="">{{post.author.username}}</a></b></span>
+                        <br>
+                        <span>Created <b><a href="">{{post.date}}</a></b></span>
+
+                    </div>
+                    <div class="replies">
+                        {{post.num_comments}} comments <br>{% get_hit_count for post %} views
+                    </div>
+                    <div class="last-reply">
+                        {{post.last_reply.date|date}}
+                        <br>
+                        By <b><a href="">{{post.last_reply.user.username}}</a></b>
+                    </div>
+                </div>
+            {% endfor %}
+            
+
+           
+            <!--ends here-->
+
+            <!--Pagination starts-->
+            <div class="pagination">
+                pages: <a href="">1</a><a href="">2</a><a href="">3</a>
+            </div>
+            <!--pagination ends-->
+
+            <div class="note">
+                <span><i class="fa fa-frown-o"></i>&nbsp; 0 Engagement Topic</span>&nbsp;&nbsp;&nbsp;<a href=""><i class="fa fa-share-square"></i></a><br>
+                <span><i class="fa fa-book"></i>&nbsp; Low Engagement Topic</span>&nbsp;&nbsp;&nbsp;<a href=""><i class="fa fa-share-square"></i></a><br>
+                <span><i class="fa fa-fire"></i>&nbsp; Popular Topic</span>&nbsp;&nbsp;&nbsp;<a href=""><i class="fa fa-share-square"></i></a><br>
+                <span><i class="fa fa-rocket"></i>&nbsp; High Engagement Topic</span>&nbsp;&nbsp;&nbsp;<a href=""><i class="fa fa-share-square"></i></a><br>
+                <span><i class="fa fa-lock"></i>&nbsp; Closed Topic</span>&nbsp;&nbsp;&nbsp;<a href=""><i class="fa fa-share-square"></i></a><br>
+            </div>
+            
+
+        </div>
+        
+        
+    </div>
+    <script src="{%  static 'big_forum_main.js' %}"></script> 
+
+    {% endblock %}
+
+     
+    
+	
+  

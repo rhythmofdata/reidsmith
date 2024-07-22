@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+
+
+{% block content %}
+
+<h3>Store</h3>
+
+<div class = "row">
+    <div class = "col-lg-4">
+        <img src="{% static 'imagesplaceholder.png'}">
+        <div class ="box-element product">
+
+        </div>
+
+    </div>
+
+    <div class = "col-lg-4">
+        <img src="{% static 'images/cart.png'}"> 
+        <div class ="box-element product">
+            
+        </div>
+        
+    </div>
+
+    <div class = "col-lg-4">
+        <img src="{% static 'images/placeholder.png'}">
+        <div class ="box-element product">
+            
+        </div>
+        
+    </div>
+</div>
+
+
+{% endblock %}

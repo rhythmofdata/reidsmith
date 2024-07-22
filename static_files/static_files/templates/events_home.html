@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<h4>Welcome to our events page! You must be logged in if you want to add, update, or delete an event!</h4>
+<br/>
+{% if user.is_authenticated %}
+            <div class="card-footer text-muted">
+                <a href="{% url 'add-event' %}" class="btn btn-primary btn-sm">Add Event</a>
+{% else %}
+<a href="{% url 'signin' %}">Login Here</a>
+{% endif %}
+<br/><br/>
+{% for event in event_list %}
+
+<form class="d-flex" role="search" method="POST" actio="{% url 'events:search-events' %}">
+    {% csrf_token %}
+  <input class="form-control me-2" type="search" placeholder="Search Events" aria-label="Search">
+  <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
+
+<div class="card">
+    <div class="card-footer">
+        {{event}}
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Venue: 
+            {{event.venue }}
+        </h5>
+        <p class="card-text">
+            <ul>
+                <li>Date: {{ event.event_date }}</li>
+                <li>Venue: {{ event.venue }}</li>
+                <li>Manager: {{ event.manager }}</li>
+                <li>Description: {{ event.description }}</li>
+                <li>Price: {{ event.price }}</li>
+                <li>Attendees: <br/>
+                    {% for user in event.attendees.all %}
+                        {{ user }}<br/>
+                    {% endfor %}
+                </li>
+
+            </ul>
+        </p>
+    </div>
+    <div class="card-footer text-muted">
+        
+
+        {% if user == event.manager %}
+            <div class="card-footer text-muted">
+                <a href="{% url 'update-event' event.id %}" class="btn btn-primary btn-sm">Update</a>
+
+                <a href="{% url 'delete-event' event.id %}" class="btn btn-danger btn-sm">Delete</a>
+
+                <a href="" class="btn btn-success btn-sm">Pay</a>
+            </div>
+
+        {% elif user.is_authenticated %}
+            <a href="" class="btn btn-success btn-sm">Pay</a>
+        {% endif %}
+    </div>
+</div>
+<br/><br/>
+{% empty %}
+    <p>There are no items yet.</p>
+
+
+{% endfor %}
+
+{% endblock %}
+
+

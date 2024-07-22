@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+
+
+{% if event_list %}
+{% for event in event_list %}
+    {% if event.approved %}
+
+<div class="card">
+    <div class="card-footer">
+        <h3>{{event}}</h3>
+    </div>
+    <div class="card-body">
+        <h6 class="card-title">Location: 
+            {{event.venue }}
+        </h6>
+        <p class="card-text">
+            <ul>
+                <li>Date: {{ event.event_date }}</li>
+                <li>Venue: {{ event.venue }}</li>
+                <li>Manager: {{ event.manager }}</li>
+                <li>Description: {{ event.description }}</li>
+                    {% for user in event.attendees.all %}
+                        {{ user }}<br/>
+                    {% endfor %}
+                </li>
+
+            </ul>
+
+        </p>
+        <div class="card-footer text-muted">
+            <a href="{% url 'events:event-details' event.id %}" class="btn btn-primary">Purchase Tickets</a>
+        </div>
+    </div>
+    {% if user.is_authenticated %}
+        {% if user == event.manager %}
+            <div class="card-footer text-muted">
+                <a href="{% url 'events:update-event' event.id %}" class="btn btn-primary btn-sm">Update</a>
+
+                <a href="{% url 'events:delete-event' event.id %}" class="btn btn-danger btn-sm">Delete</a>
+            </div>
+        {% endif %}
+    {% endif %}
+</div>
+<br/><br/>
+    {% endif %}
+
+{% endfor %}
+
+{% else %}
+
+<h3>Sorry, no events yet!</h3>
+{% endif %}
+
+{% endblock %}
+
+<!--<img
+    class="card-img-top"
+    src="{{event.thumbnail.url}}"
+    alt="Card image cap"
+  />
+  -->

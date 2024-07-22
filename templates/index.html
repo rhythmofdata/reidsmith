@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+
+{% block content %}
+        <!-- #967DAD---->
+
+        <div class="mt-4 p-5  text-center text-white rounded" style= "background-color:#59cdfd">   <!-- #A4A9A3-->
+          <!--<img src="{% static 'images/background_tropical.jpg' %}" class="card-img-top" alt="whoops"> -->
+          <h1>Welcome To The Reid-Smith Family Website!</h1>  
+          <h3>Celebrating Family, Creating Memories</h3>
+            
+            
+        </div>
+
+        {% if user.is_authenticated %}
+        <h4> You're successfully logged in.</h4>
+        
+        {% endif %}
+
+        <!-- #ff3a22-->
+        
+        <br>
+        <br>
+        <br>
+        <!------------------------------------------------------------------>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+          <div class="col">
+            <div class="card h-100">
+              <a style="text-decoration:none" href="{% url 'list-announcements' %}">
+              <img src="{% static 'reunion_site/familyreunion7.jpg' %}" class="card-img-top" alt="whoops">
+              <div class="card-body text-center" style = "color:black">
+               <!--  <i class="fa fa-bullhorn fa-3x">Announcements</i> -->
+               
+                <p>ANNOUNCEMENTS</p>
+                <p>Stay updated with the latest family news and announcements.</p>
+                
+              </div>
+              </a>
+            </div>
+          </div>
+          
+          <div class="col">
+            <div class="card h-100">
+              <a style="text-decoration:none" href="{% url 'events:event-list' %}">
+              <img src="{% static 'reunion_site/familyreunion1.jpg' %}" class="card-img-top" alt="whoops"> 
+              <div class="card-body text-center" style = "color:black">
+                <!--<i class="fa fa-calendar fa-3x">Events</i> -->
+                <p>UPOCOMING EVENTS</p>
+                <p>Check out our upcoming events.</p>
+                <br>
+                
+              </div>
+              </a>
+            </div>
+          </div>
+          
+          <div class="col">
+            <div class="card h-100">
+              <a style="text-decoration:none" href="{% url 'photo:list' %}">
+              <img src="{% static 'reunion_site/familyreunion5.jpg' %}" class="card-img-top" alt="whoops">
+              <div class="card-body text-center" style = "color:black">
+               <!---- <i class="fa fa-solid fa-camera-retro fa-3x">Photo Gallery</i> -->
+               <p>SEE FAMILY PHOTOS</p>
+               <p>Browse through our collection of memorable family photos. 
+                Feel free to contribute and share your favorite moments with us!
+               </p>
+                <br>
+                
+              </div>
+              </a>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <a style="text-decoration:none" href="{% url 'polls_home' %}">
+              <img src="{% static 'reunion_site/familyreunion4.jpg' %}" class="card-img-top" alt="whoops">
+              <div class="card-body text-center" style = "color:black">
+                <!-- <i class="fa fa-check fa-3x" aria-hidden="true">Vote</i> -->
+                <p>VOTE</p>
+                <p>Share your opinions and vote on family-related polls.</p>
+               
+                <br>
+                
+              </div>
+              </a>
+            </div>
+          </div>
+            
+          <div class="col">
+            <div class="card h-100">
+              <a style="text-decoration:none" href="{% url 'big_forum_home' %}">
+              <img src="{% static 'reunion_site/familyreunion3.jpg' %}" class="card-img-top" alt="whoops">
+              <div class="card-body text-center" style = "color:black">
+               <!--- <i class="fa fa-solid fa-comments fa-3x">Forum</i> -->
+               <p>JOIN THE FORUM</p>
+               <p>Connect with family members and share your thoughts on the family forum.</p>
+                <br>
+                
+              </div>
+              </a>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <a style="text-decoration:none" href="#">
+              <img src="{% static 'reunion_site/familyreunion6.jpg' %}" class="card-img-top" alt="whoops">
+              <div class="card-body text-center" style = "color:black">
+                <!-- <i class="fa fa-phone fa-3x" aria-hidden="true">Contact Us</i> -->
+                <p>REACH OUT TO US</p>
+                <br>
+                
+              </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!------------------------------------------------------------------>
+        <div class="row">
+            {% for photo in homepage_photos %}
+            <div class="col-lg-3 col-md-4 col-xs-6">
+              <a style="text-decoration:none" href="{% url 'photo:detail' photo.id %}" class="d-block mb-4 h-100">
+                <!-- <img src="{{photo.image.url}}" class="img-fluid rounded" alt="{{photo.title}}" /> -->
+              </a>
+            </div>
+            {% endfor %}
+          </div>
+        
+
+        
+
+        <br/><br/>
+        <div class="row">
+            {% for photo in photos %} 
+        
+            <div class="col-lg-3 col-md-4 col-xs-6">
+                <a href="{% url 'photo:detail' photo.id %}" class="d-block mb-4 h-100">
+                <img src="{{photo.image.url}}" class="img-fluid rounded" alt="{{photo.title}}" />
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+
+
+       
+{% endblock %}
+
+
+
+
+        <script src="" async defer></script>

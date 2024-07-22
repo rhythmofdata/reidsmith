@@ -1,0 +1,133 @@
+
+
+
+<!-- Remove the container if you want to extend the Footer to full width. -->
+
+    <!-- Footer -->
+    <footer
+            class="text-center text-lg-start text-white"
+            style="background-color: #3e4551"
+            >
+      <!-- Grid container -->
+      <div class="container p-4 pb-0">
+        <!-- Section: Links -->
+        <section class="">
+          <!--Grid row-->
+          <div class="row">
+            <!--Grid column-->
+            <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+              <h5 class="text-uppercase">Enjoy this site!</h5>
+  
+              <p>
+                Have fun using this site. Every once in a while
+                you might find a bug or something that might not
+                work.  Please don't hesitate to reach out and let
+                us know so that we can continue to make this site 
+                a fun, useful, and overall great web application!
+                
+              </p>
+            </div>
+            <!--Grid column-->
+  
+            <!--Grid column-->
+            <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+              <h5 class="text-uppercase">Stay Informed</h5>
+  
+              <ul class="list-unstyled mb-0" >
+                <li>
+                  <a href="{% url 'events:event-list' %}" class="text-white">Events</a>
+                </li>
+                <li>
+                  <a href="{% url 'list-announcements' %}" class="text-white">Announcements</a>
+                </li>
+                <li>
+                    <a href="{% url 'subscribe' %}" class="text-white">Newsletter</a>
+                </li>
+                <li>
+                    <a href="#" class="text-white">About Us</a>
+                </li>
+              </ul>
+            </div>
+            <!--Grid column-->
+  
+            <!--Grid column-->
+            <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+              <h5 class="text-uppercase">Participate</h5>
+  
+              <ul class="list-unstyled mb-0">
+                <li>
+                  <a href="{% url 'polls_home' %}" class="text-white">Vote</a>
+                </li>
+               
+              </ul>
+            </div>
+            <!--Grid column-->
+  
+            <!--Grid column-->
+            <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+              <h5 class="text-uppercase">Connect</h5>
+  
+              <ul class="list-unstyled mb-0">
+                <li>
+                  <a href="{% url 'signup' %}" class="text-white">Register</a>
+                </li>
+                  <a href="{% url 'signin' %}" class="text-white">Login</a>
+                </li>
+                <li><br>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="https://m.facebook.com/groups/399538976729840/permalink/2260502330633486/?mibextid=Nif5oz"><i class="fa fa-facebook-f fa-3x" style="color:#0862F6;"></i></a></li>
+                
+              </ul>
+            </div>
+            <!--Grid column-->
+  
+            <!--Grid column-->
+            <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+              <h5 class="text-uppercase">Reach Out</h5>
+  
+              <ul class="list-unstyled mb-0">
+                <li>
+                  <a href="#" class="text-white">Contact Us</a>
+                </li>
+              </ul>
+            </div>
+            <!--Grid column-->
+          </div>
+          <!--Grid row-->
+        </section>
+        <!-- Section: Links -->
+  
+        <hr class="mb-4" />
+  
+        <!-- Section: CTA -->
+        <section class="">
+          <p class="d-flex justify-content-center align-items-center">
+            <span class="me-3">Register here</span>
+            
+            <button type="button" class="btn btn-outline-light btn-rounded"> 
+                <a href="{% url 'signup' %}">Sign up!</a>
+            </button>
+          </p>
+        </section>
+       
+        <!-- Section: CTA -->
+  
+        <hr class="mb-4" />
+  
+        <!-- Section: Social media -->
+        <!-- Section: Social media -->
+      </div>
+      <!-- Grid container -->
+  
+      <!-- Copyright -->
+      <div
+           class="text-center p-3"
+           style="background-color: rgba(0, 0, 0, 0.2)"
+           >
+        © 2023 Copyright:
+        <a class="text-white" href="{% url 'home' %}">Hodges Haywood/rhythmofdata</a>
+      </div>
+      <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+ 

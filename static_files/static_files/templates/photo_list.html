@@ -1,0 +1,23 @@
+<!-- photoapp/templates/photoapp/photo_list-->
+{% extends 'base.html' %} 
+
+{% block content %}
+{% if user.is_authenticated %}
+<h3>Welcome to the photo gallery.</h3>
+
+<br/><br/>
+{% else %}
+<h6>Welcome to the photo gallery.  You must be a logged in member to add, delete, or update your photos.</h6>
+<h6>Once logged in, just click on the photo you wish to update or delete.</h6>
+{% endif %}
+<div class="row">
+  {% for photo in photos %}
+  <div class="col-lg-3 col-md-4 col-xs-6">
+    <a href="{% url 'photo:detail' photo.id %}" class="d-block mb-4 h-100">
+      <img src="{{photo.image.url}}" class="img-fluid rounded" alt="{{photo.title}}" />
+    </a>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock content %}

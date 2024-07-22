@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+
+<h3 style = "margin-bottom: 20px"><strong>Here are the results of our poll so far.</strong></h3>
+<br>
+<h4>{{question.question}}</h4>
+<h4>hello</h4>
+<ul class="list-group">
+  {% for option in options %}
+  <h4>{{option}}</h4>
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    {{option.option}}
+    <span class="badge bg-primary rounded-pill">{{option.vote}}</span>
+  </li>
+  {% endfor %}
+</ul>
+
+
+
+
+
+
+{% endblock content%}

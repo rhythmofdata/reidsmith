@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<style>
+    form{
+        /*border:4px solid black;*/
+        margin: 0 auto;
+        padding: 40px;
+        width: fit-content;
+    }
+</style>
+
+<form action="{% url 'addInForum' %}" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" class="btn btn-success" value="submit">
+</form>
+
+{% endblock %}

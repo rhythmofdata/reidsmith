@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div>
+  {% if user.is_authenticated %}
+  
+    <h2 class="text-center" id="title">Hello there! Welcome to our voting page!  Please participate in one of our polls.
+  {% else %}  
+    <h2 class="text-center" id="title">You must be a registered member and signed if you want to vote!.</h2>
+  {% endif %}
+</div>
+<br/><br/>
+<div class="list-group">
+    {% for question in questions %}
+  <a href="{% url 'vote' question.id %}" class="list-group-item list-group-item-action"><h5>{{question.question}}</h5></a>
+
+    {% endfor %}
+
+</div>
+
+
+
+
+
+
+{% endblock %}
+
+
+

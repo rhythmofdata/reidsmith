@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+
+
+<!-- go to video #  8 to put things in cards -->
+
+    <h1>Add Event</h1>
+    <br/><br/>
+  
+            
+            
+        {% if submitted %}
+        Your event was submitted successfuly!  However, it still needs to be approved before we post it.
+        {% else %}
+
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+
+                <input type="submit" value="Submit" class="btn btn-secondary">
+            </form>
+        {% endif %}
+   
+{% endblock %}

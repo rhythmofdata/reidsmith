@@ -1,0 +1,46 @@
+{% extends "base.html" %} 
+
+{% comment %} templates/event_details.html {% endcomment %}
+
+
+{% block title %} Buy Product {% endblock title%} 
+{% block script %} <script src="https://js.stripe.com/v3/"></script> {% endblock script%} 
+{% block content %}
+<div class="card-deck">
+  {% for price in prices %}
+  <div class="card">
+    <img
+      class="card-img-top"
+      src="{{product.thumbnail.url}}"
+      alt="Card image cap"
+    />
+    <div class="card-body">
+      <h5 class="card-title">{{event.name}}</h5>
+      <p class="card-text">{{event.description}}</p>
+      <div class="card-text">
+        <h5 class="card-text">${{ price.event_price }}</h5>
+        <form
+          action="{% url 'events:create-checkout-session' price.id %}"
+          method="POST">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-primary">Checkout</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+<!-- ticket_app/templates/ticket_app/ticket_purchase.html -->
+<h2>Choose Your Ticket</h2>
+<form method="post" action="{% url 'events:create-checkout-session price.id' %}">
+  {% csrf_token %}
+  {% for ticket in tickets %}
+      <label>
+          {{ ticket.age_group }} - ${{ ticket.price }}
+          <input type="checkbox" name="tickets" value="{{ ticket.id }}">
+      </label><br>
+  {% endfor %}
+  <button type="submit">Purchase</button>
+</form>
+
+{% endblock content %}

@@ -1,0 +1,73 @@
+
+{% extends 'big_forum_base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+    <!-- search box-->
+    
+    <div class="search-box">
+        <div>
+            <select name="" id="">
+                <option value="everything">Search Forum</option>
+                <option value="titles">Titles</option>
+                <option value="descriptions">Description</option>
+            
+            </select>
+            <input type="text" name="q" id="" placeholder="search...">
+            <button>Go</button>
+        </div>
+    </div>
+    <div class="big_forum_container">
+        <div class="subforum">   <!-- subforum is an arbitrary name...could have called it something else. -->
+            <div class="subforum-title">
+                <h1>Categories</h1>
+            </div>
+            {% for forum in forums %}
+                <div class="subforum-row">
+                    <div class="subforum-icon subforum-column center">
+                    </div>
+                    <div class="subforum-description subforum-column">
+                        <h1><a style="text-decoration:none" href="{{forum.get_url}}">{{forum.title}}</a></h1>
+                        <p>Description: {{forum.description}}</p>
+                    </div>
+                    <div class="subforum-stats subforum-column center">
+                        <span>{{forum.num_posts}} posts</span>
+                    </div>
+                    <div class="subforum-info subforum-column">
+                        {% if forum.last_post %}
+                    
+                            <b><a href="{{forum.last_post.get_url}}">Last post</a></b> by <a href="">{{forum.last_post.author.username}}</a> 
+                            <br>on <small>{{forum.last_post.date|date}}</small>
+                        {% else %}
+                            <span>No posts in this category.</span>
+                        {% endif %}
+                    </div>
+                </div>
+
+            {% endfor %}
+            <hr class="subforum-divider">
+
+        </div>
+    </div>
+    {% if user.is_authenticated %}
+            <div style="font-size:30px;font-weight:300px;margin-left:100px;"><a style="text-decoration:none" href="{% url 'big_forum_create_post' %}">+ Add a post</a></div>
+    {% endif %}
+     <!-- Forum Info -->
+     <div class="forum-info">
+        <div class="chart">
+            MyForum - Stats &nbsp;<i class="fa fa-bar-chart"></i>
+        </div>
+        <span><u>5,369</u> Posts in <u>48</u> Topics by <u>8,124</u> Members.</span><br>
+        <span>Latest post: <b><a style="text-decoration:none" href="">Random post</a></b> on Dec 15 2021 By <a style="text-decoration:none" href="">RandomUser</a></span>.<br>
+        <span>Check <a style="text-decoration:none" href="">the latest posts</a> .</span><br>
+    </div>
+    
+    
+	<!-- <script src="{%  static 'big_forum_main.js' %}"></script> -->
+
+
+
+{% endblock %}

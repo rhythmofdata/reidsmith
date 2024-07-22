@@ -1,0 +1,103 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" ;>
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'home' %}">Reid-Smith Family</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              See Events
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'events:list-events' %}">View Events</a></li>
+            <!---
+            {% if user.is_authenticated %}
+            <li><a class="dropdown-item" href="{% url 'events:add-event' %}">Add Event</a></li>
+            {% endif %}
+          -->
+            <li><hr class="dropdown-divider"></li>
+            
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Announcements
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'list-announcements' %}">View Announcements</a></li>
+            {% if user.is_authenticated %}
+            <li><a class="dropdown-item" href="{% url 'home' %}">My Announcements</a></li>
+            <li><a class="dropdown-item" href="{% url 'add-announcement' %}">Make Announcent</a></li>
+            {% endif %}
+            <li><a class="dropdown-item" href="{% url 'home' %}">Search Announcements</a></li>
+            <li><hr class="dropdown-divider"></li>
+          </ul>
+        </li>
+        <!--
+        <li class="nav-item">
+          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+        </li>
+        -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Photo Gallery
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'photo:list' %}">View photos</a></li>
+            {% if user.is_authenticated %}
+            <li><a class="dropdown-item" href="{% url 'photo:create' %}">Add Photos</a></li>
+            {% endif %}
+            <li><hr class="dropdown-divider"></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'subscribe' %}">Subscribe to Newsletter |</a></li>
+
+      {% if request.user.is_superuser %}
+        <li class="nav-item"><a class="nav-link" href="{% url 'letter_from_page' %}">Create and send Newsletter |</a></li>
+      {% endif %}
+        <li class="nav-item"><a class="nav-link" href="{% url 'big_forum_home' %}">Forum</a></li>
+        
+        
+        <li class="nav-item"><a class="nav-link" href="{% url 'polls_home' %}">Vote</a></li>
+        
+        
+        
+        <!--<li class="nav-item"><a class="nav-link" href="#">Forum</a></li> -->
+        {% if user.is_authenticated %}
+          <li class="nav-item"><a class="nav-link" href="{% url 'signout' %}">Logout</a></li>
+        {% else %}
+          <li class="nav-item"><a class="nav-link" href="{% url 'signup' %}">Register</a></li>
+          <li class="nav-item"><a class="btn btn-warning" href="{% url 'signin' %}" >Login</a></li>
+        {% endif %}
+      </div>
+      
+      <ul class="navbar-nav sm-icons">
+        <li class="nav-item"><a class="nav-link" href="https://m.facebook.com/groups/399538976729840/permalink/2260502330633486/?mibextid=Nif5oz"><i class="fa fa-facebook-f fa-3x" style="color:#0862F6;"></i></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+  
+        
+        
+          
+        
+          
+        
+        
+            
+
+  
+
+  
+
+

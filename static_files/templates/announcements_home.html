@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<h4>Wish someone a happy birthday, congratulate a graduating student, or anything you like here on the Announcements page! </h4>
+<h4>You must be logged in if you want to view, add, update, or delete an events!</h4>
+<br/>
+{% if user.is_authenticated %}
+            <div class="card-footer text-muted">
+                <a href="{% url 'add-announcement' %}" class="btn btn-primary btn-sm">Make Announcement</a>
+{% else %}
+<a href="{% url 'signin' %}">Login Here</a>
+{% endif %}
+<br/><br/>
+{% for announcement in announcement_list %}
+
+<div class="card">
+    <div class="card-footer">
+        {{announcement}}
+    </div>
+    <div class="card-body">
+        <p class="card-text">
+            <ul>
+                <li>Date: {{ announcement.announcement_date }}</li>
+                <li>Announcer: {{ announcement.manager }}</li>
+                <li>Description: {{ announcement.description }}</li>               
+            </ul>
+        </p>
+    </div>
+    <div class="card-footer text-muted">
+        
+
+        {% if user == announcement.manager %}
+            <div class="card-footer text-muted">
+                <a href="{% url 'update-announcement' announcement.id %}" class="btn btn-primary btn-sm">Update</a>
+
+                <a href="{% url 'delete-announcement' announcement.id %}" class="btn btn-danger btn-sm">Delete</a>
+            </div>
+
+       
+        {% endif %}
+    </div>
+</div>
+<br/><br/>
+
+{% endfor %}
+
+{% endblock %}

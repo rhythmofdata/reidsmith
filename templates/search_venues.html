@@ -1,0 +1,48 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<center>
+    {% if searched %}
+        <h1>Here are the results based on your search for {{ searched }}</h1>
+    
+    <br/>
+        {% for venue in venues %}
+            <a href="{% url 'show-venue' venue.id %}">{{ venue }}<br/></a>
+            
+        {% endfor %}
+    {% else %}
+        <h1>Are you trying to search for a venue?  Please try again.</h1>
+
+    {% endif %}
+
+   
+<br/>
+
+
+
+</center>
+
+
+
+
+<br>
+<a href="{% url 'list-events' %}"><h3 style = "margin-bottom: 20px"><strong>See Our Upcoming Events</strong></h3></a>
+<br>
+
+
+<br>
+<a href="{% url 'add-venue' %}"><h3 style = "margin-bottom: 20px"><strong>Add Venue</strong></h3></a>
+<br>
+
+<br>
+<a href="{% url 'list-venues' %}"><h3 style = "margin-bottom: 20px"><strong>List Venues</strong></h3></a>
+<br>
+
+<!--
+<h2 style = "margin-bottom: 20px"><strong>Announcing Our 2025 Smith-Reid Family Reunion!</strong></h2>
+-->
+
+{% endblock %}

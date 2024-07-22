@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+<!-- go to video #  8 to put things in cards -->
+
+    <h1>Welcome to our Venues page!.  You must be logged in if you want to add, delete, or update venues!</h1>
+    <br/>
+    <br/>
+    {% if user.is_authenticated %}
+                <div class="card-footer text-muted">
+                    <a href="{% url 'add-venue' %}" class="btn btn-primary btn-sm">Add Venue</a>
+    {% else %}
+    <a href="{% url 'login' %}">Login Here</a>
+    {% endif %}
+    <br/><br/>
+
+    <table class="table table-hover table-striped table-bordered">
+
+    {% for venue in venues %}
+        <tr>
+            <td>
+                <a href="{% url 'show-venue' venue.id %}">{{ venue }}</a>
+            </td>
+            {% if user.is_authenticated %}
+            <td align='right'>
+                <a href="{% url 'update-venue' venue.id %}" class="btn btn-primary btn-sm">Update</a>
+                <a href="{% url 'delete-venue' venue.id %}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+            {% endif %}
+        </tr>
+
+        
+
+        
+
+    {% endfor %}
+
+    </table>
+    <br/><br/>
+    <!--
+    {{ venues }} <br/>
+    Current Page: {{ venues.number}}<br/>
+    Number of Pages: {{ venues.paginator.num_pages }} <br/>
+    <hr><br/><br/>
+    -->
+    {% if venues.has_previous %}
+        <a href="?page=1">&laquo First </a>
+        <a href="?page={{ venues.previous_page_number }}">Previous</a>
+
+    {% endif %}
+
+    Page {{ venues.number }} of {{ venues.paginator.num_pages }}
+    
+
+    {% if venues.has_next %}
+        <a href="?page={{ venues.next_page_number }}">Next</a>
+
+        <a href="?page={{ venues.paginator.num_pages }}">Last &raquo</a>
+    {% endif %}
+
+
+
+
+    <br>
+
+
+
+
+
+
+
+{% endblock %}

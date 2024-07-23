@@ -44,7 +44,6 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = ('reunionsitetester@gmail.com')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')             #evra lmic shaf keub
 SECRET_KEY = "django-insecure-ko4e0kh-ti00p*-k@n^-@nst++965t7atbmmo)j!whwpr#6g5!"
-SECRET_KEY = os.environ.get(SECRET_KEY,'')
 #EMAIL_HOST_PASSWORD = 'Broth3rchoochoo!!'
 EMAIL_PORT = 587
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

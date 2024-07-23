@@ -55,16 +55,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 
-#SECRET_KEY = os.environ.get('SECRET_KEY')
-#SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
+ALLOWED_HOSTS = ['localhost','127.0.0.1','192.241.151.142']
 
-
-#DEBUG = os.getenv("DEBUG","False") == "True"
-ALLOWED_HOSTS = ['localhost','127.0.0.1','143.244.157.55']
-#ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS","localhost,127.0.0.1").split(",")
-
-#Use this in production:
-#ALLOWED_HOSTS = ["143.244.157.55","www.reidsmithfamily.com","reidsmithfamily.com"]
 
 DEBUG = False
 
@@ -139,28 +131,13 @@ WSGI_APPLICATION = "reunion.wsgi.application"
 #    }
 #}
 
-#Database
-if os.getenv("DATABASE_URL","") != "":
-    r = urlparse(os.environ.get("DATABASE_URL"))
-    DATABASES = {
-    "default": {
-         "ENGINE": "django.db.backends.postgresql_psycopg2",
-         "NAME": os.path.relpath(r.path, "/"),
-         "USER": r.username,
-         "PASSWORD": r.password,
-         "HOST": r.hostname,
-         "PORT": r.port,
-         "OPTIONS": {"sslmode": "require"},
-    }
-}
-    
-else:
-    DATABASES = {
+
+DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.postgresql_psycopg2",
             "NAME": 'newdb',
             "USER": 'hodges',
-            "PASSWORD": os.environ.get('DB_PASSWORD',''),
+            "PASSWORD": 'Broth3r_choochoo',
             "HOST": 'localhost',
             "PORT": '',
         }
@@ -202,12 +179,13 @@ USE_TZ = True
 #
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR,'static']
-#STATIC_ROOT = "/home/usojourn/reid-smith/reunion/static"
 STATIC_ROOT = BASE_DIR/'static'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_files')
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR/'media/photos'
 
 
 #
@@ -217,20 +195,16 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+#from decouple import config
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR/'media/photos'
-
-from decouple import config
-
-STRIPE_PUBLIC_KEY = config('STRIPE_PUBLIC_KEY')
-STRIPE_SECRET_KEY = config('STRIPE_SECRET_KEY')
-STRIPE_WEBHOOK_SECRET= config('STRIPE_WEBHOOK_SECRET')
+#STRIPE_PUBLIC_KEY = config('STRIPE_PUBLIC_KEY')
+#STRIPE_SECRET_KEY = config('STRIPE_SECRET_KEY')
+#STRIPE_WEBHOOK_SECRET= config('STRIPE_WEBHOOK_SECRET')
 
 
 
-BACKEND_DOMAIN = config("BACKEND_DOMAIN")
-PAYMENT_SUCCESS_URL = config("PAYMENT_SUCCESS_URL")
-PAYMENT_CANCEL_URL = config("PAYMENT_CANCEL_URL")
+#BACKEND_DOMAIN = config("BACKEND_DOMAIN")
+#PAYMENT_SUCCESS_URL = config("PAYMENT_SUCCESS_URL")
+#PAYMENT_CANCEL_URL = config("PAYMENT_CANCEL_URL")
 
 

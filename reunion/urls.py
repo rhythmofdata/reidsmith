@@ -36,6 +36,7 @@ urlpatterns = [
     path('',include('gallery.urls')),
     path('tinymce/',include('tinymce.urls')),
     path('hitcount/', include('hitcount.urls', namespace='hitcount')),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
 
     path('reset_password/',auth_views.PasswordResetView.as_view(template_name="reset_password.html"),
          name="reset_password"),

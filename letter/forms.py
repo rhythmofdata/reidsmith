@@ -1,5 +1,5 @@
 from django import forms
-from ckeditor.widgets import CKEditorWidget
+#from ckeditor.widgets import CKEditorWidget
 from . models import Subscribers, MailMessage
 from tinymce.widgets import TinyMCE
 

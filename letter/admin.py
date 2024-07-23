@@ -3,7 +3,8 @@ from . models import MailMessage, Subscribers,EmailTemplate
 from django import forms
 from django.conf import settings
 from django.core.mail import send_mail
-from ckeditor.fields import RichTextFormField
+#from ckeditor.fields import RichTextFormField
+from django_ckeditor_5.fields import CKEditor5Field
 
 
 # Register your models here.
@@ -16,7 +17,7 @@ class EmailTemplateAdminForm(forms.ModelForm):
         model = EmailTemplate
         fields = '__all__'
         widgets = {
-            'message': RichTextFormField(),
+            'message': CKEditor5Field(), 
 
         }
 

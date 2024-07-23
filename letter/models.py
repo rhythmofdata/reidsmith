@@ -1,7 +1,9 @@
 from django.db import models
 from tinymce.models import HTMLField
 from django.utils import timezone
-from ckeditor.fields import RichTextField
+from django_ckeditor_5.fields import CKEditor5Field
+#from ckeditor.fields import RichTextField
+#from ckeditor_uploader.fields import RichTextUploadingField
 
 # For postgresql
 # https://www.microfocus.com/documentation/idol/IDOL_12_0/MediaServer/Guides/html/English/Content/Getting_Started/Configure/_TRN_Set_up_PostgreSQL_Linux.htm
@@ -28,7 +30,7 @@ class MailMessage(models.Model):
 
 class EmailTemplate(models.Model):
     subject = models.CharField(max_length=255)
-    message = RichTextField()
+    message = CKEditor5Field('Text',config_name='extends')
     recipients = models.ManyToManyField(Subscribers)
 
 

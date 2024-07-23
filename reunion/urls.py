@@ -22,6 +22,7 @@ from django.conf import settings
 from django.contrib.auth import views as auth_views
 
 
+
 #path('', include('big_forum.urls')),  add this back later
 
 urlpatterns = [
@@ -36,8 +37,7 @@ urlpatterns = [
     path('',include('gallery.urls')),
     path('tinymce/',include('tinymce.urls')),
     path('hitcount/', include('hitcount.urls', namespace='hitcount')),
-   
-
+    
     path('reset_password/',auth_views.PasswordResetView.as_view(template_name="reset_password.html"),
          name="reset_password"),
 
@@ -54,5 +54,6 @@ urlpatterns = [
     
 ] 
 
+urlpatterns += path('ckeditor5/', include('django_ckeditor_5.urls')),
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

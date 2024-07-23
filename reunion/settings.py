@@ -27,8 +27,8 @@ from django.core.management.utils import get_random_secret_key  #for secret key
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 import os
-from dotenv import load_dotenv
-load_dotenv()
+#from dotenv import load_dotenv
+#load_dotenv()
 
 # Email conformation  See info.py
 '''EMAIL_USE_TLS = EMAIL_USE_TLS
@@ -73,6 +73,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "authentication",
+    "ckeditor",
     "letter",
     "crispy_forms",
     "crispy_bootstrap5",
@@ -83,8 +84,6 @@ INSTALLED_APPS = [
     "gallery",
     "taggit",
     "tinymce",
-    "ckeditor",
-    "ckeditor_uploader",
     "hitcount",
     ]
 

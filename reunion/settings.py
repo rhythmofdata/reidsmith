@@ -57,7 +57,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 ALLOWED_HOSTS = ['localhost','127.0.0.1','192.241.151.142']
 
 
-DEBUG = False
+DEBUG = True
 
 
 

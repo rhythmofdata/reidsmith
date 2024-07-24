@@ -54,10 +54,10 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 
-ALLOWED_HOSTS = ['localhost','127.0.0.1','192.241.151.142']
+ALLOWED_HOSTS = ['www.reidsmithfamily.com','reidsmithfamily.com','localhost','127.0.0.1','192.241.151.142']
 
 
-DEBUG = True
+DEBUG = False
 
 
 

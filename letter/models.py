@@ -30,7 +30,9 @@ class MailMessage(models.Model):
 
 class EmailTemplate(models.Model):
     subject = models.CharField(max_length=255)
-    message = CKEditor5Field('Text',config_name='extends')
+    
+    #message = CKEditor5Field('Text',config_name='extends')
+    message = HTMLField(null=True)
     recipients = models.ManyToManyField(Subscribers)
 
 

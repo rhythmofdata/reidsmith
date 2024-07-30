@@ -3,7 +3,7 @@ from . models import MailMessage, Subscribers,EmailTemplate
 from django import forms
 from django.conf import settings
 from django.core.mail import send_mail
-#from ckeditor.fields import RichTextFormField
+from tinymce.models import HTMLField
 from django_ckeditor_5.fields import CKEditor5Field
 
 
@@ -17,7 +17,7 @@ class EmailTemplateAdminForm(forms.ModelForm):
         model = EmailTemplate
         fields = '__all__'
         widgets = {
-            'message': RichTextFormField()(), 
+            'message': HTMLField(), 
 
         }
 

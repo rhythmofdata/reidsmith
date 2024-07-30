@@ -17,7 +17,7 @@ class EmailTemplateAdminForm(forms.ModelForm):
         model = EmailTemplate
         fields = '__all__'
         widgets = {
-            'message': CKEditor5Field(), 
+            'message': RichTextFormField()(), 
 
         }
 

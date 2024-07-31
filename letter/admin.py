@@ -4,7 +4,7 @@ from django import forms
 from django.conf import settings
 from django.core.mail import send_mail
 from tinymce.models import HTMLField
-from django_ckeditor_5.fields import CKEditor5Field
+#from django_ckeditor_5.fields import CKEditor5Field
 
 
 # Register your models here.

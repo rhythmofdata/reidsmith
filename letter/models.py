@@ -20,7 +20,6 @@ class Subscribers(models.Model):
 
 class MailMessage(models.Model):
     title = models.CharField(max_length=100,null=True)
-    #message = models.TextField(null=True)
     message = HTMLField(null=True)
 
     def __str__(self):
@@ -28,15 +27,6 @@ class MailMessage(models.Model):
     
 
 
-class EmailTemplate(models.Model):
-    subject = models.CharField(max_length=255)
-    
-    #message = CKEditor5Field('Text',config_name='extends')
-    message = HTMLField(null=True)
-    recipients = models.ManyToManyField(Subscribers)
 
-
-    def __str__(self):
-        return self.subject
 
 

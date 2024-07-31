@@ -35,4 +35,4 @@ class EmailTemplateAdmin(admin.ModelAdmin):
 
 admin.site.register(MailMessage)
 admin.site.register(Subscribers,SubscriberUserAdmin)
-admin.site.register(EmailTemplate,EmailTemplateAdmin)
+#admin.site.register(EmailTemplate,EmailTemplateAdmin)

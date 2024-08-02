@@ -117,37 +117,4 @@
             </div>
           </div>
         </div>
-        <!------------------------------------------------------------------>
-        <div class="row">
-            {% for photo in homepage_photos %}
-            <div class="col-lg-3 col-md-4 col-xs-6">
-              <a style="text-decoration:none" href="{% url 'photo:detail' photo.id %}" class="d-block mb-4 h-100">
-                <!-- <img src="{{photo.image.url}}" class="img-fluid rounded" alt="{{photo.title}}" /> -->
-              </a>
-            </div>
-            {% endfor %}
-          </div>
-        
-
-        
-
-        <br/><br/>
-        <div class="row">
-            {% for photo in photos %} 
-        
-            <div class="col-lg-3 col-md-4 col-xs-6">
-                <a href="{% url 'photo:detail' photo.id %}" class="d-block mb-4 h-100">
-                <img src="{{photo.image.url}}" class="img-fluid rounded" alt="{{photo.title}}" />
-                </a>
-            </div>
-            {% endfor %}
-        </div>
-
-
-       
-{% endblock %}
-
-
-
-
-        <script src="" async defer></script>
+  {% endblock %}
